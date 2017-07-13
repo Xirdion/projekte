@@ -1,0 +1,28 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigationBar" aria-controls="navigationBar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="#" class="navbar-brand">Recipe Book</a>
+    
+    <div class="collapse navbar-collapse" id="navigationBar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link" (click)="onSelect('recipes')">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" (click)="onSelect('shoppingList')">Shopping List</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownHeaderMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Manage
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownHeaderMenu">
+                    <a href="#" class="dropdown-item">Save Data</a>
+                    <a href="#" class="dropdown-item">Fetch Data</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

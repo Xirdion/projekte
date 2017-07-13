@@ -1,0 +1,18 @@
+{% for user in aUsers %}
+    <li class="list-group-item">
+        <div class="col-9 col-sm-10 col-md-11 p-0">
+            <div class="d-inline checkbox abc-checkbox abc-checkbox">
+                <input type="checkbox" id="checkbox_{{ user.id }}" data-user="{{ user.id }}">
+                <label for="checkbox_{{ user.id }}"></label>
+            </div>
+            <a href="{{ path('admin_user_edit', {'id': user.id}) }}">{{ user.username }}</a>
+        </div>
+        <div class="col-3 col-sm-2 col-md-1 text-center p-0">
+            {% if user.admin %}
+                <span class="badge badge-success badge-pill"><span class="fa fa-check"></span></span>
+            {% else %}
+                <span class="badge badge-danger badge-pill"><span class="fa fa-times"></span></span>
+            {% endif %}
+        </div>
+    </li>
+{% endfor %}

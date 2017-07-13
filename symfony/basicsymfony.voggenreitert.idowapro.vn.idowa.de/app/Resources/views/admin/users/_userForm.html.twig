@@ -1,0 +1,9 @@
+{{ form_start(userForm) }}
+    {{ form_row(userForm.username) }}
+    {{ form_row(userForm.plainPassword) }}
+    {{ form_row(userForm.fName) }}
+    {{ form_row(userForm.lName) }}
+    {{ form_row(userForm.role) }}
+    <a href="{{ path('admin_users') }}" class="btn btn-secondary">abbrechen</a>
+    <button type="submit" class="btn btn-primary" formnovalidate>speichern</button>
+{{ form_end(userForm)}}

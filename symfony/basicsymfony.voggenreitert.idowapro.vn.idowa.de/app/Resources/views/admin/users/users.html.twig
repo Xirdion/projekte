@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Benutzer</h1>
+    <div class="sticky-top pt-1 user-list-header">
+        <div class="row mb-1">
+            <div class="col-12 col-md-5 col-lg-4 mb-1 mb-md-0">
+                <a href="{{ path('admin_user_new') }}" class="btn btn-success"><span class="fa fa-plus"></span> Benutzer</a>
+                <button id="delete-user" class="btn btn-danger" type="button" data-target="#dialog"><span class="fa fa-trash"></span> Löschen</button>
+                <a id="show-search-user" href="#" class="btn btn-info d-md-none"><span class="fa fa-search"></span> <span class="button-text">Suche</span></a>
+                {{ form_start(deleteForm) }}
+                {{ form_row(deleteForm.selectedusers) }}
+                {{ form_end(deleteForm) }}
+            </div>
+            <div id="user-search-box" class="col-12 col-md-7 col-lg-8">
+                <div class="input-group">
+                    <input id="search-user" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button id="search-user-submit" class="btn btn-secondary" type="button" data-searchurl="{{ path('admin_user_search') }}">Suchen</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <ul id="user-list-header" class="list-group">
+            <li class="list-group-item active">
+                <div class="col-9 col-sm-10 col-md-11 p-0">
+                    {% if sortcol=='users' %}
+                        {#
+                            {% set newSortdir = 'asc' %}
+                            {% if sortdir == 'asc' %}
+                                {% set newSortdir = 'desc' %}
+                            {% endif %}
+                        #}
+                        {% set newSortdir = (sortdir == 'asc' ? 'desc' : 'asc') %}
+                        <a class="sort-users" href="{{ path('admin_users', {'sort':'users', 'sortdir': newSortdir}) }}">{% trans %}Benutzername{% endtrans %} <span class="fa fa-sort-{{ sortdir }}"></span></a>
+                    {% else %}
+                        <a class="sort-users" href="{{ path('admin_users', {'sort':'users', 'sortdir':'asc'}) }}">{% trans %}Benutzername{% endtrans %}</a>
+                    {% endif %}
+                </div>
+                <div class="col-3 col-sm-2 col-md-1 text-center p-0">
+                    {% if sortcol=='admin' %}
+                        {% set newSortdir = (sortdir == 'asc' ? 'desc' : 'asc') %}
+                        <a class="sort-users" href="{{ path('admin_users', {'sort':'admin', 'sortdir': newSortdir }) }}">{% trans %}ROLE_ADMIN{% endtrans %} <span class="fa fa-sort-{{ sortdir }}"></span></a>
+                    {% else %}
+                        <a class="sort-users" href="{{ path('admin_users', {'sort':'admin', 'sortdir':'asc'}) }}">{% trans %}ROLE_ADMIN{% endtrans %}</a>
+                    {% endif %}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ul id="user-list" class="list-group" data-load="{{ path('admin_user_load') }}">
+        {{ include('admin/users/_usersList.html.twig') }}
+    </ul>
+{% endblock %}

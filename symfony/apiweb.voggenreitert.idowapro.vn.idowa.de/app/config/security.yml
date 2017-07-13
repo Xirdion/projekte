@@ -1,0 +1,44 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        database_users:
+            # entity: { class: AppBundle:User, property: email }
+            chain:
+              providers: ['db_email', 'db_username']
+        db_email:
+          entity: { class: AppBundle:User, property: email }
+        db_username:
+          entity: { class: AppBundle:User, property: username }
+
+    firewalls:
+    # when symfony boots it only uses one firewall. if you are on /api/something then the api-firewall will be used else the main
+        api:
+            pattern: ^/api/
+            anonymous: true
+            stateless: true
+            guard:
+                authenticators:
+                    - 'jwt_token_authenticator'
+        main:
+            pattern: ^/
+            anonymous: true
+            form_login:
+                # The route name that the login form submits to
+                check_path: security_login_check
+                login_path: security_login_form
+
+            logout:
+                # The route name the user can go to in order to logout
+                path: security_logout
+    access_control:
+        - { path: ^/_wdt|_profiler, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # allow anonymous API - if auth is needed, it's handled in the controller
+        - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_FULLY }

@@ -1,0 +1,36 @@
+{% import '_macros.twig' as macros -%}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Add custom CSS here -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="main-console-screen">
+                {% if app.request.session.flashbag.has('notice_happy') %}
+                    {{ macros.flashMessage(app.request.session.flashbag.get('notice_happy'), true) }}
+                {% endif %}
+
+                {% if app.request.session.flashbag.has('notice_sad') %}
+                    {{ macros.flashMessage(app.request.session.flashbag.get('notice_sad'), false) }}
+                {% endif %}
+
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+    {% endblock %}
+</body>
+</html>

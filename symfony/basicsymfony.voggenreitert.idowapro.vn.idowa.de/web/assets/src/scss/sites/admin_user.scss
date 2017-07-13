@@ -1,0 +1,21 @@
+#user-list-header{
+  a{
+    color: $c-white;
+  }
+}
+.user-list-header{
+  background-color: $c-white;
+  top: 72px;
+  @include media-breakpoint-down(sm){
+    top: 70px;
+  }
+}
+#show-search-user{
+  float: right;
+}
+#user-search-box{
+  display: none;
+  @include media-breakpoint-up(md){
+    display: block !important;
+  }
+}

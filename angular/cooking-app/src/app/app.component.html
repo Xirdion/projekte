@@ -1,0 +1,5 @@
+<app-header (changeShowModus)="onShowModusChanged($event)"></app-header>
+<div class="container">
+    <app-recipe *ngIf="getShowModus() === 'recipes'"></app-recipe>
+    <app-shopping-list *ngIf="getShowModus() === 'shoppingList'"></app-shopping-list>
+</div>

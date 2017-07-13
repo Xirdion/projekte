@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        <h1>Hallo {% if app.user.fname %}{{ app.user.fname }}{% else %}{{ app.user.username }}{% endif %}</h1>
+    {% else %}
+        <h1>Hallo</h1>
+    {% endif %}
+    <ul>
+        {% if is_granted('ROLE_USER') %}
+            <li>
+                <a href="{{ path('profile') }}">Mein Profil</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_users') }}">Benutzerübersicht</a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
+{% endblock %}

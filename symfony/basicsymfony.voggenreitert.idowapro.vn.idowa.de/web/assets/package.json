@@ -1,0 +1,22 @@
+{
+  "name": "basic_symfony",
+  "version": "1.0.0",
+  "description": "Basic Symfony",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "awesome-bootstrap-checkbox": "^1.0.0-alpha.5",
+    "bootstrap": "^4.0.0-alpha.6",
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.5.1",
+    "gulp-uglify": "^2.1.2",
+    "mdbootstrap": "^4.3.1"
+  }
+}

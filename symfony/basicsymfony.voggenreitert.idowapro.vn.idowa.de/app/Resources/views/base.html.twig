@@ -1,0 +1,47 @@
+{# save flash messages in variable #}
+{% set flash = app.session.flashBag.all() %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/dist/css/main.css') }}">
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {{ include('layout/header.html.twig') }}
+        <div id="page-body" class="container">
+            {# show all flash messages #}
+            {% for type, msgs in flash %}
+                {% for msg in msgs %}
+                    <div class="flashmsg alert alert-{{ type }}">
+                        {{ msg|raw }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}
+
+            {% endblock %}
+        </div>
+        {{ include('layout/dialog.html.twig') }}
+        {% block javascripts %}
+            <script src="{{ asset('assets/node_modules/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/node_modules/tether/dist/js/tether.min.js') }}"></script>
+            <script src="{{ asset('assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/dist/js/main.min.js') }}"></script>
+            {% if flash %}
+                {# check if there are flash messages #}
+                <script src="{{ asset('assets/dist/js/flashmsgRemove.min.js') }}"></script>
+            {% endif %}
+        {% endblock %}
+    </body>
+</html>

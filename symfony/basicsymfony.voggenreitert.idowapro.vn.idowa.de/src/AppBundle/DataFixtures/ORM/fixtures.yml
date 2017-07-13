@@ -1,0 +1,9 @@
+AppBundle\Entity\User:
+    user_{1..100}:
+        username: test<current()>@test.de
+        plainPassword: basic_symfony
+        role: 'ROLE_USER'
+    user:
+        username: admin@admin.de
+        plainPassword: adminadmin
+        role: 'ROLE_ADMIN'

@@ -1,0 +1,9 @@
+<a href="#" class="list-group-item" (click)="onSelectRecipe(recipe)">
+    <div class="col-md-8 col-12">
+        <h4 class="card-title">{{ recipe.getName() }}</h4>
+        <p class="card-text">{{ recipe.getDescription() }}</p>
+    </div>
+    <div class="col-md-4 col-12">
+        <img [src]="recipe.getImagePath()" alt="{{ recipe.getName() }}" class="img-fluid">
+    </div>
+</a>

@@ -1,0 +1,15 @@
+AppBundle\Entity\User:
+    user_thomas:
+        username: thomas
+        email: 'voggenreiter.t@idowapro.de'
+        plainpassword: thomas93497
+    user_thomas2:
+        username: thomas2
+        email: 'tv@aplido.de'
+        plainpassword: thomas93497
+
+AppBundle\Entity\Question:
+    question_1:
+        question: 'Was ist 1+1?'
+        author: '@user_thomas'
+        user: '@user_thomas2'

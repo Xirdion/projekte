@@ -1,0 +1,24 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+app_web:
+    resource: '@AppBundle/Controller/Web/'
+    type: annotation
+
+app_api:
+    resource: '@AppBundle/Controller/Api'
+    type: annotation
+    defaults:
+        _format: json
+
+api_login_check:
+    path: /api/login_check
+
+NelmioApiDocBundle:
+    resource: '@NelmioApiDocBundle/Resources/config/routing.yml'
+    prefix: /api/doc
+
+gesdient_jwt_refresh_token:
+    path: /api/token/refresh
+    defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
